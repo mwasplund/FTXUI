@@ -33,7 +33,7 @@ std::string GeneratorString(const char*& data, size_t& size) {
 
   // The input component do not support invalid UTF8 yet.
   try {
-    to_wstring(out);
+    to_wstring(std::string_view(out));
   } catch (...) {
     return "0";
   }
