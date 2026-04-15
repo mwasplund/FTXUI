@@ -150,7 +150,7 @@ Color::Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
 
   if (Terminal::ColorSupport() == Terminal::Color::Palette256) {
     type_ = ColorType::Palette256;
-    red_ = best;
+    red_ = static_cast<uint8_t>(best);
   } else {
     type_ = ColorType::Palette16;
     red_ = GetColorInfo(Color::Palette256(best)).index_16;
@@ -234,7 +234,7 @@ Color Color::Interpolate(float t, const Color& a, const Color& b) {
       [](const Color& color) -> std::tuple<uint8_t, uint8_t, uint8_t> {
     switch (color.type_) {
       case ColorType::Palette1: {
-        return {0, 0, 0};
+        return {uint8_t{0}, uint8_t{0}, uint8_t{0}};
       }
       case ColorType::Palette16: {
         const ColorInfo info = GetColorInfo(Color::Palette16(color.red_));

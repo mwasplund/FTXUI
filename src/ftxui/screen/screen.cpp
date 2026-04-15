@@ -564,14 +564,14 @@ void Screen::ApplyShader() {
 std::uint8_t Screen::RegisterHyperlink(std::string_view link) {
   for (std::size_t i = 0; i < hyperlinks_.size(); ++i) {
     if (hyperlinks_[i] == link) {
-      return i;
+      return static_cast<uint8_t>(i);
     }
   }
   if (hyperlinks_.size() == std::numeric_limits<std::uint8_t>::max()) {
     return 0;
   }
   hyperlinks_.push_back(std::string(link));
-  return hyperlinks_.size() - 1;
+  return static_cast<uint8_t>(hyperlinks_.size() - 1);
 }
 
 const std::string& Screen::Hyperlink(std::uint8_t id) const {

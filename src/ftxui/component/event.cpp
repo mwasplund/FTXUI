@@ -35,15 +35,15 @@ Event Event::Character(std::string_view input) {
 /// @brief An event corresponding to a given typed character.
 /// @param c The character typed by the user.
 // static
-Event Event::Character(char c) {
-  return Event::Character(std::string{c});
+Event Event::Character(char input) {
+  return Event::Character(std::string{input});
 }
 
 /// @brief An event corresponding to a given typed character.
 /// @param c The character typed by the user.
 // static
-Event Event::Character(wchar_t c) {
-  return Event::Character(to_string(std::wstring{c}));
+Event Event::Character(wchar_t input) {
+  return Event::Character(to_string(std::wstring{input}));
 }
 
 /// @brief An event corresponding to a given typed character.
@@ -86,11 +86,11 @@ Event Event::Special(std::initializer_list<char> input) {
 
 /// @internal
 // static
-Event Event::CursorPosition(std::string_view input, int x, int y) {
+Event Event::CursorPosition(std::string_view input, int xPos, int yPos) {
   Event event;
   event.input_ = std::string(input);
   event.type_ = Type::CursorPosition;
-  event.data_.cursor = {x, y};  // NOLINT
+  event.data_.cursor = {xPos, yPos};  // NOLINT
   return event;
 }
 
@@ -284,7 +284,6 @@ std::string Event::DebugString() const {
       return "";
     }
   }
-  return "";
 }
 
 // clang-format off
