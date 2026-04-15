@@ -1,6 +1,6 @@
 Name: 'ftxui'
 Language: 'C++|0'
-Version: 0.1.0
+Version: 6.1.9
 IncludePaths: [
 	'include/'
 	'src/'
