@@ -216,7 +216,6 @@ class ConstStringListRef {
       return (*v)[i];
     }
     std::string_view operator()(const std::vector<std::wstring>* v) const {
-      (v);
       return "";  // Temporary fix: Cannot return a view to a temporary
                   // conversion.
     }
